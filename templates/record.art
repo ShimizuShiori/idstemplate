@@ -1,0 +1,26 @@
+using System;
+using Orchard.Data;
+using Orchard.Data.Conventions;
+using System.Collections.Generic;
+
+namespace {{ Namespace }}.Records 
+{
+
+    public class {{ ClassName }}Record {{ BaseListStr }} 
+    {
+
+{{each Fields}}
+    {{ if $value.FieldType.endsWith("Record")}}
+            public virtual {{$value.FieldType}} {{$value.FieldName}} {get;set;}
+    {{ else if $value.FieldType.startsWith("IList") }}
+                
+            [CascadeAllDeleteOrphan, Aggregate]
+            public virtual IList<{{ $value.FieldType }}> {{ $value.FieldName }} { get; set; }
+    {{ else }}
+            public virtual {{$value.FieldType}} {{$value.FieldName}} {get;set;}
+    {{ /if}}
+{{/each}}
+
+    }
+
+}

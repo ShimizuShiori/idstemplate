@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Product",
+    "description": "A product from Acme's catalog",
+    "type": "object",
+    "properties": {
+        "Classes": {
+            "description": "all class",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Namespace": {
+                        "description": "the class's namespace",
+                        "type": "string"
+                    },
+                    "ClassName": {
+                        "description": "the class's name",
+                        "type": "string"
+                    },
+                    "Interfaces": {
+                        "description": "the class implements all interfaces",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "SuperClassName": {
+                        "description": "the class's base class",
+                        "type": "string"
+                    },
+                    "Events": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Name": { "type": "string" },
+                                "Args": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": { "type": "string" },
+                                            "Type": { "type": "string" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "Ingore": {
+                        "description": "if true then do not generate",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "JustDao": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "Fields": {
+                        "description": "all fields",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "FieldName": {
+                                    "description": "Field's Name",
+                                    "type": "string"
+                                },
+                                "FieldType": {
+                                    "description": "Fields's Type, C# type",
+                                    "type": "string"
+                                },
+                                "DbType": {
+                                    "description":
+                                        "the db's type, auto build if not given",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": ["FieldName", "FieldType"]
+                    }
+                },
+
+                "required": ["Namespace", "ClassName", "Fields"]
+            }
+        }
+    }
+}

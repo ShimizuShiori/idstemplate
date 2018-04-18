@@ -1,0 +1,1 @@
+void {{ Name }}({{@Args.map(x => `${x.Type} ${x.Name}`).join(", ")}})

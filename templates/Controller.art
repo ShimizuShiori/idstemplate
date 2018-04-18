@@ -1,0 +1,24 @@
+using IDS.Mvc;
+using {{ Namespace }}.Records;
+using {{ Namespace }}.Services.Managers;
+using {{ Namespace }}.ViewModels;
+using Orchard;
+using System.Linq;
+using System.Web.Mvc;
+
+namespace {{ Namespace }}.Controllers
+{
+    public class {{ ClassName }}Controller : IDSController<I{{ ClassName }}Manager, {{ ClassName }}ViewModel, {{ ClassName }}Record>
+    {
+
+        public {{ ClassName }}Controller(IWorkContextAccessor workContextAccessor, I{{ ClassName }}Manager manager) : base(workContextAccessor, manager)
+        {
+        }
+
+        protected override IQueryable<{{ ClassName }}Record> GetSelectExpressionByViewModel({{ ClassName }}ViewModel v)
+        {
+            var q = this.manager.LinqExpression();
+            return q;
+        }
+    }
+}

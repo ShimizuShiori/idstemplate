@@ -1,0 +1,17 @@
+using {{ Namespace }}.Records;
+using {{ Namespace }}.Services.Handlers;
+using {{ Namespace }}.ViewModels;
+using Orchard.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace {{ Namespace }}.Services.Managers
+{
+    public class {{ ClassName }}Manager : BaseManager<I{{ ClassName }}Handler, {{ ClassName }}ViewModel, {{ ClassName }}Record>, I{{ ClassName }}Manager
+    {
+        public {{ ClassName }}Manager(I{{ ClassName }}Handler handler) : base(handler)
+        {
+        }
+    }
+}

@@ -1,0 +1,53 @@
+using System;
+using {{ Namespace }}.Records;
+
+namespace {{ Namespace }}.ViewModels {
+
+    public class {{ ClassName }}FormViewModel {
+
+        public int RecordId{get;set;}
+
+
+{{each Fields.filter(x => x.FieldName !== "Id")}}
+    {{ if $value.FieldType.endsWith("Record") }}
+        public string {{$value.FieldName}}Name {get;set;}
+        public int {{$value.FieldName}}Id {get;set;}
+    {{ else }}
+        public {{ $value.FieldType }} {{$value.FieldName}} {get;set;}
+    {{ /if }}
+{{/each}}
+
+        public {{ ClassName }}ListViewModel InitByRecord({{ ClassName }}Record record)
+        {
+            this.RecordId = record.Id;
+{{ each Fields.filter(x=>x.FieldName !== "Id") }}
+    {{ if $value.FieldType.endsWith("Record") }}
+            if(record.{{ $value.FieldName }} != null)
+            {
+                this.{{ $value.FieldName }}Id = record.{{ $value.FieldName }}.Id;
+                this.{{ $value.FieldName }}Name = record.{{ $value.FieldName }}.Name;
+            }
+    {{ else }}
+            this.{{ $value.FieldName }} = record.{{ $value.FieldName }};
+    {{ /if }}
+{{ /each }}
+            return this;
+        }
+
+        public {{ ClassName }}Record ToRecord()
+        {
+            return new {{ ClassName }}Record()
+            {
+                Id = this.RecordId
+{{ each Fields.filter(x=>x.FieldName !== "Id") }}
+    {{ if $value.FieldType.endsWith("Record") }}
+                , {{$value.FieldName}} = new {{$value.FieldType}}(){ Id = this.{{$value.FieldName}}Id }
+    {{ else }}
+                , {{$value.FieldName}} = this.{{$value.FieldName}}
+    {{ /if }}
+{{ /each }}
+            };
+        }
+    }
+
+}

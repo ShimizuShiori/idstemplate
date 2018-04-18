@@ -1,0 +1,38 @@
+{
+    "$schema": "./config.schema.json",
+    "Classes": [
+        {
+            "Namespace": "MDM",
+            "ClassName": "TestEvent",
+            "Fields": [
+                {
+                    "FieldName": "Id",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "Name",
+                    "FieldType": "String",
+                    "DbType": "varchar(128)"
+                }
+            ],
+            "Events": [
+                {
+                    "Name": "OnCreating",
+                    "Args": [{ "Name": "name", "Type": "String" }]
+                },
+                {
+                    "Name": "OnCreated",
+                    "Args": [
+                        { "Name": "id", "Type": "int" },
+                        { "Name": "name", "Type": "string" }
+                    ]
+                },
+                {
+                    "Name": "OnDeleted",
+                    "Args": [{ "Name": "id", "Type": "int" }]
+                }
+            ]
+        }
+    ]
+}

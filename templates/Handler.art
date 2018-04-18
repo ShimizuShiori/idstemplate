@@ -1,0 +1,31 @@
+using System;
+using {{ Namespace }}.Records;
+using Orchard.Data;
+using System.Linq;
+
+namespace {{ Namespace }}.Services.Handlers
+{
+
+    public class {{ ClassName }}Handler : BaseIDSHandler<{{ ClassName }}Record>, I{{ ClassName }}Handler
+    {
+        public {{ ClassName }}Handler(IRepository<{{ ClassName }}Record> repository, ITransactionManager tm) : base(repository, tm)
+        {
+        }
+
+        protected override void CheckRecordForWrite({{ ClassName }}Record record)
+        {
+{{ each Fields }}
+    {{ if $value.FieldType === "String" }}
+            if(record.{{ $value.FieldName }} == null) record.{{ $value.FieldName }} = "";
+    {{ /if }}
+    {{ set length = $value.DbType.substring($value.DbType.indexOf("(") + 1, $value.DbType.indexOf(")"))}}
+    {{ if length !== "" }}
+            if(record.{{ $value.FieldName }}.Length > {{ length }})
+                throw new ArgumentOutOfRangeException("{{ $value.FieldName }}", "length must less then {{ length }}");
+    {{ /if }}
+{{ /each }}
+            base.CheckRecordForWrite(record);
+        }
+    }
+
+}

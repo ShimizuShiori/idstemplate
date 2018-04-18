@@ -1,0 +1,57 @@
+{
+    "$schema": "./config.schema.json",
+    "Classes": [
+        {
+            "Namespace": "MDM",
+            "ClassName": "MaterialFlow",
+            "Fields": [
+               {
+                   "FieldName": "Id",
+                   "FieldType": "int",
+                   "DbType": "int"
+               },
+               {
+                   "FieldName": "MaterialClassId",
+                   "FieldType": "int",
+                   "DbType": "int"
+               },
+               {
+                   "FieldName": "CreateMaterialFlowId",
+                   "FieldType": "int",
+                   "DbType": "int"
+               },
+               {
+                   "FieldName": "UpdateMaterialFlowId",
+                   "FieldType": "int",
+                   "DbType": "int"
+               }
+            ]
+        },
+        {
+            "Namespace": "MDM",
+            "ClassName": "MaterialFieldAllocation",
+            "Fields": [
+                {
+                    "FieldName": "Id",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "MaterialClassId",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "FieldId",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "FunctionId",
+                    "FieldType": "int",
+                    "DbType": "int"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+using System;
+using {{ Namespace }}.Records;
+using Orchard.Data;
+using System.Linq;
+
+namespace {{ Namespace }}.Services.Handlers
+{
+
+    public interface I{{ ClassName }}Handler : IIDSHandler<{{ ClassName }}Record>
+    {
+        
+    }
+
+}

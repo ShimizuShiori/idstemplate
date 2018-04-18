@@ -1,0 +1,16 @@
+if exists (select * from sysobjects where type = 'u' and name = '{{ Namespace }}_{{ ClassName }}Record')
+    drop table [{{ Namespace }}_{{ ClassName }}Record]
+go
+
+create table [{{ Namespace }}_{{ ClassName }}Record]
+(
+    id int primary key identity(1,1)
+{{ each Fields.filter(x => x.FieldName !== "Id" ) }}
+    {{ if $value.FieldType.endsWith("Record") }}
+    ,[{{ $value.FieldName }}_id] int
+    {{ else if !$value.FieldType.startsWith("IList")}}
+    ,[{{ $value.FieldName }}] {{ $value.DbType }}
+    {{ /if }}
+{{ /each }}
+)
+go

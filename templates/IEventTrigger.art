@@ -1,0 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Orchard;
+using {{ Namespace }}.Events.Protocols;
+
+namespace {{ Namespace }}.Events.Triggers
+{
+    public interface I{{ ClassName }}EventTrigger : I{{ ClassName }}EventProtocol, IDependency
+    {
+
+    }
+}

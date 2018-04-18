@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Orchard.Events;
+using Orchard;
+
+namespace {{ Namespace }}.Events.Triggers
+{
+    public class {{ ClassName }}EventTrigger : I{{ ClassName }}EventTrigger
+    {
+        [Dependency]
+        public IEventBus EventBus { get; set; }
+
+{{ each Events }}
+        
+        public {{include './MethodSign.art' $value}}
+        {
+            Dictionary<String, Object> args = new Dictionary<string, object>();
+    {{ each $value.Args }}
+            args[nameof({{ $value.Name }})] = {{ $value.Name }};
+    {{ /each }}
+            this.EventBus.Notify("I{{ ClassName }}EventHandler.{{ $value.Name }}", args);
+        }
+{{ /each }}
+
+    }
+}

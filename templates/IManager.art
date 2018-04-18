@@ -1,0 +1,15 @@
+using {{ Namespace }}.Records;
+using {{ Namespace }}.Services.Handlers;
+using {{ Namespace }}.ViewModels;
+using Orchard.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace {{ Namespace }}.Services.Managers
+{
+    public interface I{{ ClassName }}Manager : IBaseManager<{{ ClassName }}ViewModel, {{ ClassName }}Record>
+    {
+        
+    }
+}

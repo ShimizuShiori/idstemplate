@@ -1,0 +1,54 @@
+{
+    "$schema": "./config.schema.json",
+    "Classes": [
+        {
+            "Namespace": "MDM",
+            "ClassName": "MaterialClassDefinition",
+            "Fields": [
+                {
+                    "FieldName": "Id",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "Field1Value",
+                    "FieldType": "String",
+                    "DbType": "varchar(128)"
+                },
+                {
+                    "FieldName": "Field2Value",
+                    "FieldType": "String",
+                    "DbType": "varchar(128)"
+                },
+                {
+                    "FieldName": "Field3Value",
+                    "FieldType": "String",
+                    "DbType": "varchar(128)"
+                },
+                {
+                    "FieldName": "Priority",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "IsActived",
+                    "FieldType": "Boolean",
+                    "DbType": "bit"
+                }
+            ],
+            "Events": [
+                {
+                    "Name": "Creating",
+                    "Args": [
+                        { "Name": "id", "Type": "int" },
+                        { "Name": "createUserId", "Type": "int" }
+                    ]
+                },
+                {
+                    "Name": "Created",
+                    "Args": [{ "Name": "id", "Type": "int" }]
+                }
+            ]
+        }
+    ]
+}

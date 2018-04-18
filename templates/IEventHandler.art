@@ -1,0 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Orchard;
+using Orchard.Events;
+using {{ Namespace }}.Events.Protocols;
+
+namespace {{ Namespace }}.Events.Handlers
+{
+    public interface I{{ ClassName }}EventHandler : I{{ ClassName }}EventProtocol, IEventHandler
+    {
+
+    }
+}

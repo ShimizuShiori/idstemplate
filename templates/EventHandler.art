@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Orchard;
+
+namespace {{ Namespace }}.Events.Handlers
+{
+    public class {{ ClassName }}EventHandler : I{{ ClassName }}EventHandler
+    {
+
+{{ each Events }}
+        public {{include './MethodSign.art' $value}}
+        {
+
+        }
+
+{{ /each }}
+
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "$schema": "./config.schema.json",
+    "Classes": [
+        {
+            "Namespace": "MDM",
+            "ClassName": "MaterialAllField",
+            "Fields": [
+                {
+                    "FieldName": "Id",
+                    "DbType": "int",
+                    "FieldType": "int"
+                },
+                {
+                    "FieldName": "TableName",
+                    "DbType": "varchar(128)",
+                    "FieldType": "String"
+                },
+                {
+                    "FieldName": "FieldName",
+                    "DbType": "varchar(128)",
+                    "FieldType": "String"
+                },
+                {
+                    "FieldName": "Name",
+                    "DbType": "nvarchar(32)",
+                    "FieldType": "String"
+                },
+                {
+                    "FieldName": "Description",
+                    "DbType": "nvarchar(128)",
+                    "FieldType": "String"
+                },
+                {
+                    "FieldName": "IsSystem",
+                    "DbType": "bit",
+                    "FieldType": "Boolean"
+                },
+                {
+                    "FieldName": "IsShowToEveryone",
+                    "DbType": "bit",
+                    "FieldType": "Boolean"
+                },
+                {
+                    "FieldName": "IsClassable",
+                    "DbType": "bit",
+                    "FieldType": "Boolean"
+                },
+                {
+                    "FieldName": "IsRequired",
+                    "DbType": "bit",
+                    "FieldType": "Boolean"
+                },
+                {
+                    "FieldName": "ShowIndex",
+                    "DbType": "int",
+                    "FieldType": "int"
+                }
+            ]
+        }
+    ]
+}

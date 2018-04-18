@@ -1,0 +1,58 @@
+///<reference path="../../../Themes/TheAdmin/Content/scripts/TheAdmin.d.ts" />
+
+{{ set withoutIdFields = Fields.filter(x=> x.FieldName !== "Id") }}
+
+(function () {
+
+    $(function () {
+
+        /**
+         * @type {RecordManageTableOption | EditDialogOption}
+         */
+        var option = {
+            title: "页面标题",
+            module: "{{ Namespace }}",
+            controller: "{{ ClassName }}",
+            columns: [
+{{ each Fields }}
+    {{ if $index > 0 }}
+    ,
+    {{ /if }}
+    {
+        title : "{{ $value.FieldName }}"
+        , name : "{{ $value.FieldName }}"
+        {{ if $value.FieldType === "Boolean" }}
+        , render : function(d, t, f, m) {
+            return [
+                '<input type="checkbox" ',
+                d ? "checked " : " ",
+                "disabled />"
+            ].join("");
+        }
+        {{ /if }}
+    }
+{{ /each }}
+{{@ Fields.filter(x=> x.FieldName !== "Id").map(x => `{ title: "${x.FieldName}", name: "${x.FieldName}" }` ).join(",\n") }}
+            ],
+            getEmptyRecord: function () {
+                return {
+{{@ Fields.map(x=> {
+    if(x.FieldName === "Id") x.FieldName = "RecordId";
+    return x;
+}).map(x => `${x.FieldName} : ""` ).join(",\n") }}
+                };
+            },
+            getRecordName: function (r) {
+                return r.Name;
+            },
+            vueOptionHandler: function (opt) {
+            }
+        }
+
+
+        $("#{{ ClassName }}Page").IDSPage(option);
+
+
+    });
+
+})();

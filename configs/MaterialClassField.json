@@ -1,0 +1,31 @@
+{
+    "$schema": "./config.schema.json",
+    "Classes": [
+        {
+            "Namespace": "MDM",
+            "ClassName": "MaterialClassFieldDefinition",
+            "Fields": [
+                {
+                    "FieldName": "Id",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "Field1",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "Field2",
+                    "FieldType": "int",
+                    "DbType": "int"
+                },
+                {
+                    "FieldName": "Field3",
+                    "FieldType": "int",
+                    "DbType": "int"
+                }
+            ]
+        }
+    ]
+}

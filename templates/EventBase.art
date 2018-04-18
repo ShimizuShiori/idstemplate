@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace {{ Namespace }}.Events.Protocols
+{
+    public interface I{{ ClassName }}EventProtocol
+    {
+
+{{ each Events }}
+        {{include './MethodSign.art' $value}};
+{{ /each }}
+
+    }
+}
