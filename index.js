@@ -150,6 +150,22 @@ fs.readFile(fileName, "utf8", (err, data) => {
             {
                 TemplatePath: "templates/ListJS",
                 OutputPath: d => `./results/Scripts/${d.ClassName}List.js`
+            },
+            {
+                TemplatePath: "templates/Query/IQuerier",
+                OutputPath: d => `./results/Queries/I${d.ClassName}Querier.cs`
+            },
+            {
+                TemplatePath: "templates/Query/IQueryHandler",
+                OutputPath: d => `./results/Queries/I${d.ClassName}QueryHandler.cs`
+            },
+            {
+                TemplatePath: "templates/Query/Querier",
+                OutputPath: d => `./results/Queries/${d.ClassName}Querier.cs`
+            },
+            {
+                TemplatePath: "templates/Query/QueryHandler",
+                OutputPath: d => `./results/Queries/${d.ClassName}QueryHandler.cs`
             }
         ];
 

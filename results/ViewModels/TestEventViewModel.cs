@@ -7,6 +7,7 @@ namespace MDM.ViewModels
     {
         public int RecordId{get;set;}
         public String Name {get;set;}
+        public const String PROPERTY_NAME_Name = "Name";
         public void InitByRecord(TestEventRecord record)
         {
             this.RecordId = record.Id;

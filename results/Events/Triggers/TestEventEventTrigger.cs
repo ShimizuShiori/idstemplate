@@ -16,7 +16,7 @@ namespace MDM.Events.Triggers
             args[nameof(name)] = name;
             this.EventBus.Notify("ITestEventEventHandler.OnCreating", args);
         }
-        public void OnCreated(int id,string name)
+        public void OnCreated(int id, string name)
         {
             Dictionary<String, Object> args = new Dictionary<string, object>();
             args[nameof(id)] = id;

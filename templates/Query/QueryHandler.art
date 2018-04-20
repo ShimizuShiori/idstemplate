@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Orchard.Events;
+using Orchard;
+using Orchard.Data;
+using {{ Namespace }}.Services.Managers;
+using {{ Namespace }}.Records;
+
+namespace {{ Namespace }}.Queries
+{
+    public class {{ ClassName }}QueryHandler : I{{ ClassName }}QueryHandler
+    {
+        [Dependency]
+        public I{{ ClassName }}Manager Manager { get; set; }
+
+        public void ById(QueryArgument argument, QueryResult result)
+        {
+            int id = argument.GetArg<int>("id", 0);
+            var searchResult = this.Manager.GetById(id);
+            if(searchResult == null)
+                throw new RecordNotFoundException<{{ ClassName }}Record>(id);
+            var row = result.NewSingleResult();
+            foreach(var field in argument.RequiredFields)
+            {
+                row[field] = searchResult.GetType().GetProperty(field).GetValue(result, null);
+            }
+        }
+    }
+}

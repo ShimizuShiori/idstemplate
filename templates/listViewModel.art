@@ -18,6 +18,9 @@ namespace {{ Namespace }}.ViewModels
     {{ else }}
         public {{ $value.FieldType }} {{$value.FieldName}} {get;set;}
     {{ /if }}
+
+        public const String PROPERTY_NAME_{{ $value.FieldName }} = "{{ $value.FieldName }}";
+
 {{/each}}
 
         public void InitByRecord({{ ClassName }}Record record)

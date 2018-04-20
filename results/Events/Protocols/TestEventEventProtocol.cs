@@ -7,7 +7,7 @@ namespace MDM.Events.Protocols
     public interface ITestEventEventProtocol
     {
         void OnCreating(String name);
-        void OnCreated(int id,string name);
+        void OnCreated(int id, string name);
         void OnDeleted(int id);
     }
 }

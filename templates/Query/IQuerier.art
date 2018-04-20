@@ -1,0 +1,10 @@
+using Orchard;
+using Orchard.Events;
+
+namespace {{ Namespace}}.Queries
+{
+    public interface I{{ ClassName }}Querier : IDependency
+    {
+        QueryResult ById(int id, params string[] requiredFields);
+    }
+}

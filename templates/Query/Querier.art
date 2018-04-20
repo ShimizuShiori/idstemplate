@@ -1,0 +1,20 @@
+using Orchard.Events;
+using Orchard;
+using System;
+using System.Collections.Generic;
+
+namespace {{ Namespace}}.Queries
+{
+    public class {{ ClassName }}Querier : I{{ ClassName }}Querier
+    {
+        [Dependency]
+        public IQuerier Querier { get; set; }
+
+        QueryResult ById(int id, params string[] requiredFields);
+        {
+            Dictionary<String, Object> args = new Dictionary<string, object>();
+            args[nameof(id)] = id;
+            return Querier.Query("I{{ ClassName }}QueryHandler", "ById", requiredFields, args);
+        }
+    }
+}
