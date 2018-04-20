@@ -101,7 +101,10 @@ fs.readFile(fileName, "utf8", (err, data) => {
     opts.Classes.forEach(opt => {
         if (opt.Ingore) return;
         opt = initOption(opt);
-
+        opt.Fields.forEach(
+            x =>
+                (x.IsBoolean = x.FieldType.toLowerCase().indexOf("bool") !== -1)
+        );
         var allFileOptions = [
             {
                 TemplatePath: "templates/record",
@@ -157,7 +160,8 @@ fs.readFile(fileName, "utf8", (err, data) => {
             },
             {
                 TemplatePath: "templates/Query/IQueryHandler",
-                OutputPath: d => `./results/Queries/I${d.ClassName}QueryHandler.cs`
+                OutputPath: d =>
+                    `./results/Queries/I${d.ClassName}QueryHandler.cs`
             },
             {
                 TemplatePath: "templates/Query/Querier",
@@ -165,30 +169,36 @@ fs.readFile(fileName, "utf8", (err, data) => {
             },
             {
                 TemplatePath: "templates/Query/QueryHandler",
-                OutputPath: d => `./results/Queries/${d.ClassName}QueryHandler.cs`
+                OutputPath: d =>
+                    `./results/Queries/${d.ClassName}QueryHandler.cs`
             }
         ];
 
-        if(typeof opt.Events !== "undefined"){
+        if (typeof opt.Events !== "undefined") {
             allFileOptions.push({
-                TemplatePath:"templates/EventBase",
-                OutputPath: d => `./results/Events/Protocols/${d.ClassName}EventProtocol.cs`,
+                TemplatePath: "templates/EventBase",
+                OutputPath: d =>
+                    `./results/Events/Protocols/${d.ClassName}EventProtocol.cs`
             });
             allFileOptions.push({
-                TemplatePath:"templates/IEventHandler",
-                OutputPath: d => `./results/Events/Handlers/I${d.ClassName}EventHandler.cs`,
+                TemplatePath: "templates/IEventHandler",
+                OutputPath: d =>
+                    `./results/Events/Handlers/I${d.ClassName}EventHandler.cs`
             });
             allFileOptions.push({
-                TemplatePath:"templates/EventHandler",
-                OutputPath: d => `./results/Events/Handlers/${d.ClassName}EventHandler.cs`,
+                TemplatePath: "templates/EventHandler",
+                OutputPath: d =>
+                    `./results/Events/Handlers/${d.ClassName}EventHandler.cs`
             });
             allFileOptions.push({
-                TemplatePath:"templates/IEventTrigger",
-                OutputPath: d => `./results/Events/Triggers/I${d.ClassName}EventTrigger.cs`,
+                TemplatePath: "templates/IEventTrigger",
+                OutputPath: d =>
+                    `./results/Events/Triggers/I${d.ClassName}EventTrigger.cs`
             });
             allFileOptions.push({
-                TemplatePath:"templates/EventTrigger",
-                OutputPath: d => `./results/Events/Triggers/${d.ClassName}EventTrigger.cs`,
+                TemplatePath: "templates/EventTrigger",
+                OutputPath: d =>
+                    `./results/Events/Triggers/${d.ClassName}EventTrigger.cs`
             });
         }
 

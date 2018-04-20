@@ -32,7 +32,6 @@
         {{ /if }}
     }
 {{ /each }}
-{{@ Fields.filter(x=> x.FieldName !== "Id").map(x => `{ title: "${x.FieldName}", name: "${x.FieldName}" }` ).join(",\n") }}
             ],
             getEmptyRecord: function () {
                 return {

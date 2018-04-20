@@ -69,7 +69,14 @@
                                 },
                                 "FieldType": {
                                     "description": "Fields's Type, C# type",
-                                    "type": "string"
+                                    "type": "string",
+                                    "enum": [
+                                        "String",
+                                        "int",
+                                        "Boolean",
+                                        "DateTime",
+                                        "float"
+                                    ]
                                 },
                                 "DbType": {
                                     "description":
